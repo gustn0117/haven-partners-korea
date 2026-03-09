@@ -1,34 +1,19 @@
-'use client';
-
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
+import { WorkIcon } from '@/components/Icons';
 
-const worksData = [
-  {
-    genre: 'FILM',
-    title: '프로젝트 A',
-    desc: '2027년 개봉 목표 장편 영화 프로젝트',
-    status: '검토 중',
-    icon: '🎬',
-  },
-  {
-    genre: 'DRAMA',
-    title: '프로젝트 B',
-    desc: '2027-2028년 방영 목표 드라마 시리즈',
-    status: '기획 단계',
-    icon: '📺',
-  },
-  {
-    genre: 'FILM',
-    title: '프로젝트 C',
-    desc: '장르: 스릴러 / 2028년 개봉 목표',
-    status: '제안서 검토',
-    icon: '🎞️',
-  },
-];
+export const revalidate = 0;
 
-export default function WorksPage() {
-  const pathname = usePathname();
+async function getWorks() {
+  const { data } = await supabase
+    .from('works')
+    .select('*')
+    .order('created_at', { ascending: false });
+  return data || [];
+}
+
+export default async function WorksPage() {
+  const worksData = await getWorks();
 
   return (
     <>
@@ -39,24 +24,25 @@ export default function WorksPage() {
 
       <section className="section">
         <div className="board-tabs">
-          <Link href="/board/news" className={`board-tab ${pathname === '/board/news' ? 'active' : ''}`}>
-            뉴스
-          </Link>
-          <Link href="/board/works" className={`board-tab ${pathname === '/board/works' ? 'active' : ''}`}>
-            작품
-          </Link>
+          <Link href="/board/news" className="board-tab">뉴스</Link>
+          <Link href="/board/works" className="board-tab active">작품</Link>
         </div>
 
         <div className="works-grid">
-          {worksData.map((item, i) => (
-            <div className="work-card" key={i}>
+          {worksData.length === 0 && (
+            <p style={{ padding: '40px 0', color: 'var(--text-muted)' }}>등록된 작품이 없습니다.</p>
+          )}
+          {worksData.map((item) => (
+            <div className="work-card" key={item.id}>
               <div className="work-thumb">
-                <span className="work-thumb-icon">{item.icon}</span>
+                <span className="work-thumb-icon">
+                  <WorkIcon name={item.icon} size={48} />
+                </span>
               </div>
               <div className="work-info">
                 <div className="work-genre">{item.genre}</div>
                 <div className="work-title">{item.title}</div>
-                <div className="work-desc">{item.desc}</div>
+                <div className="work-desc">{item.description}</div>
                 <span className="work-status">{item.status}</span>
               </div>
             </div>
