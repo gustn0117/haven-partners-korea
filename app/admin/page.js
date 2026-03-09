@@ -60,7 +60,7 @@ export default function AdminPage() {
   const startEdit = (item) => {
     setEditingItem(item);
     if (tab === 'news') {
-      setForm({ date: item.date, title: item.title, category: item.category });
+      setForm({ date: item.date, title: item.title, category: item.category, content: item.content || '' });
     } else {
       setForm({ genre: item.genre, title: item.title, description: item.description, status: item.status, icon: item.icon });
     }
@@ -71,7 +71,7 @@ export default function AdminPage() {
     setEditingItem(null);
     if (tab === 'news') {
       const today = new Date().toISOString().slice(0, 10).replace(/-/g, '.');
-      setForm({ date: today, title: '', category: '공지' });
+      setForm({ date: today, title: '', category: '공지', content: '' });
     } else {
       setForm({ genre: 'FILM', title: '', description: '', status: '검토 중', icon: 'film' });
     }
@@ -219,6 +219,10 @@ export default function AdminPage() {
                 <div className={`${styles.formRow} ${styles.formGridFull}`}>
                   <label>제목</label>
                   <input className={styles.input} value={form.title || ''} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
+                </div>
+                <div className={`${styles.formRow} ${styles.formGridFull}`}>
+                  <label>본문</label>
+                  <textarea className={styles.textarea} value={form.content || ''} onChange={(e) => setForm({ ...form, content: e.target.value })} placeholder="뉴스 본문 내용을 입력하세요" rows={6} />
                 </div>
               </div>
             ) : (

@@ -313,6 +313,28 @@
   box-shadow: 0 0 0 3px rgba(158,134,84,0.06);
 }
 
+.textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #e0ded9;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #faf9f7;
+  color: #333;
+  transition: all 0.2s;
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.7;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #9e8654;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(158,134,84,0.06);
+}
+
 .formActions {
   display: flex;
   gap: 10px;

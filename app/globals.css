@@ -603,6 +603,75 @@ nav a:hover::after, nav a.active::after { width: 100%; }
   white-space: nowrap;
 }
 
+/* News Detail */
+.news-detail {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.news-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.news-detail-date {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.news-detail-title {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--dark);
+  line-height: 1.4;
+}
+
+.news-detail-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 32px 0;
+}
+
+.news-detail-content {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 2;
+  font-weight: 300;
+}
+
+.news-detail-content p + p {
+  margin-top: 8px;
+}
+
+.news-detail-empty {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.news-detail-footer {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.news-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color 0.3s;
+  letter-spacing: 0.5px;
+}
+
+.news-detail-back:hover {
+  color: var(--gold);
+}
+
 /* Works */
 .works-grid {
   display: grid;

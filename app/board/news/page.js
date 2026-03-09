@@ -32,11 +32,11 @@ export default async function NewsPage() {
             <p style={{ padding: '40px 0', color: 'var(--text-muted)', textAlign: 'center' }}>등록된 뉴스가 없습니다.</p>
           )}
           {newsData.map((item) => (
-            <div className="news-item" key={item.id}>
+            <Link href={`/board/news/${item.id}`} className="news-item" key={item.id}>
               <span className="news-date">{item.date}</span>
               <span className="news-title">{item.title}</span>
               <span className="news-category">{item.category}</span>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
