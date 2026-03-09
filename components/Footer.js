@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import Logo from './Logo';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-left">
-          <div className="footer-logo">Haven Partners Korea</div>
+          <Image src="/LOGO.png" alt="Haven Group" width={160} height={40} className="footer-logo-img" />
           <p>
             헤이븐파트너스코리아<br />
             미국 Haven Group의 한국 자회사<br />
@@ -14,19 +14,17 @@ export default function Footer() {
           </p>
         </div>
         <div className="footer-right">
-          <p>
-            <Link href="/about">회사 소개</Link>
-            {' · '}
-            <Link href="/board/news">뉴스</Link>
-            {' · '}
-            <Link href="/board/works">작품</Link>
-            {' · '}
-            <Link href="/contact">컨택트</Link>
-          </p>
+          <div className="footer-nav">
+            <Link href="/about">About</Link>
+            <Link href="/board/news">News</Link>
+            <Link href="/board/works">Works</Link>
+            <Link href="/contact">Contact</Link>
+          </div>
+          <div className="footer-email">contact@havenpartnerskorea.com</div>
         </div>
       </div>
       <div className="footer-bottom">
-        © 2026 Haven Partners Korea. All rights reserved.
+        &copy; 2026 Haven Partners Korea. All rights reserved.
       </div>
     </footer>
   );

@@ -33,17 +33,17 @@ export default function WorksPage() {
   return (
     <>
       <section className="board-hero">
-        <span className="section-label">Board</span>
-        <h1 className="section-title" style={{ color: '#fff', fontSize: 42 }}>게시판</h1>
+        <span className="section-label" style={{ position: 'relative', zIndex: 1 }}>Board</span>
+        <h1 className="section-title" style={{ color: '#fff', fontSize: 48, position: 'relative', zIndex: 1 }}>게시판</h1>
       </section>
 
       <section className="section">
         <div className="board-tabs">
           <Link href="/board/news" className={`board-tab ${pathname === '/board/news' ? 'active' : ''}`}>
-            뉴스
+            News
           </Link>
           <Link href="/board/works" className={`board-tab ${pathname === '/board/works' ? 'active' : ''}`}>
-            작품
+            Works
           </Link>
         </div>
 
@@ -51,7 +51,7 @@ export default function WorksPage() {
           {worksData.map((item, i) => (
             <div className="work-card" key={i}>
               <div className="work-thumb">
-                <span>{item.icon}</span>
+                <span className="work-thumb-icon">{item.icon}</span>
               </div>
               <div className="work-info">
                 <div className="work-genre">{item.genre}</div>

@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import Logo from './Logo';
 
 export default function Header() {
   const pathname = usePathname();
@@ -11,27 +11,30 @@ export default function Header() {
     <header className="header">
       <div className="header-inner">
         <Link href="/" className="logo-link">
-          <Logo size={40} />
-          <span className="logo-text">Haven Partners Korea</span>
+          <Image src="/LOGO2.jpg" alt="Haven Group" width={44} height={44} className="logo-icon" style={{ borderRadius: 4 }} />
+          <div className="logo-text-wrap">
+            <span className="logo-text">Haven Partners</span>
+            <span className="logo-sub">Korea</span>
+          </div>
         </Link>
         <nav>
           <Link href="/about" className={pathname === '/about' ? 'active' : ''}>
-            회사 소개
+            About
           </Link>
           <div className="nav-dropdown">
             <Link
               href="/board/news"
               className={pathname.startsWith('/board') ? 'active' : ''}
             >
-              게시판 ▾
+              Board
             </Link>
             <div className="nav-dropdown-menu">
-              <Link href="/board/news">뉴스</Link>
-              <Link href="/board/works">작품</Link>
+              <Link href="/board/news">News</Link>
+              <Link href="/board/works">Works</Link>
             </div>
           </div>
           <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>
-            컨택트
+            Contact
           </Link>
         </nav>
       </div>
