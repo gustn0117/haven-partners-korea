@@ -1,6 +1,5 @@
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import LayoutShell from '@/components/LayoutShell';
 
 export const metadata = {
   title: 'Haven Partners Korea | 헤이븐파트너스코리아',
@@ -19,9 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );
