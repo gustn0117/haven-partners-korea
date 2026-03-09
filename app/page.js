@@ -21,10 +21,9 @@ export default function Home() {
         <Link href="/contact" className="landing-nav-link">Contact</Link>
       </nav>
 
-      {/* Bottom Info */}
+      {/* Bottom */}
       <div className="landing-bottom">
         <span>&copy; 2026 Haven Partners Korea</span>
-        <span>contact@havenpartnerskorea.com</span>
       </div>
     </div>
   );

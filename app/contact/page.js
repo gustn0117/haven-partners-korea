@@ -26,7 +26,7 @@ export default function ContactPage() {
             </div>
             <div className="contact-info-item">
               <h3>Email</h3>
-              <p>contact@havenpartnerskorea.com</p>
+              <p>contact@havepk.com</p>
             </div>
           </div>
           <div>
