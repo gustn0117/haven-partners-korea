@@ -6,16 +6,13 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="hero">
-        <div className="hero-bg" />
-        <div className="hero-content">
-          <Image src="/LOGO.png" alt="Haven Group" width={280} height={70} className="hero-logo" priority />
-          <div className="hero-line" />
-          <h1 className="hero-title">
-            Partners Korea
-            <span>콘텐츠 투자 · 제작 · 배급</span>
-          </h1>
-          <p className="hero-tagline">Backed by Assets. Focused on Content.</p>
-        </div>
+        <Image src="/logo-mark.png" alt="Haven Group" width={240} height={134} className="hero-logo" priority />
+        <div className="hero-line" />
+        <h1 className="hero-title">
+          Partners Korea
+          <span>콘텐츠 투자 · 제작 · 배급</span>
+        </h1>
+        <p className="hero-tagline">Backed by Assets. Focused on Content.</p>
         <div className="hero-scroll">
           <span>Scroll</span>
           <div className="hero-scroll-line" />
@@ -24,7 +21,7 @@ export default function Home() {
 
       {/* INTRO */}
       <section className="intro-section">
-        <div className="intro-left">
+        <div>
           <span className="section-label">About</span>
           <h2 className="section-title">자산 기반의<br />콘텐츠 투자</h2>
           <div className="divider" />
@@ -42,10 +39,10 @@ export default function Home() {
       </section>
 
       {/* VALUES */}
-      <section className="values-section">
+      <section className="section-warm">
         <div className="section-inner">
           <span className="section-label">Our Value</span>
-          <h2 className="section-title" style={{ color: '#fff' }}>핵심 가치</h2>
+          <h2 className="section-title">핵심 가치</h2>
           <div className="divider" />
           <div className="values-grid">
             <div className="value-item">
@@ -86,7 +83,7 @@ export default function Home() {
             제안서 제출 및 파트너십 문의를 환영합니다.
           </p>
           <Link href="/contact" className="btn-primary">
-            <span>문의하기</span>
+            문의하기
           </Link>
         </div>
       </section>

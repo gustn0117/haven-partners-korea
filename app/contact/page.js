@@ -8,11 +8,9 @@ export default function ContactPage() {
   return (
     <>
       <section className="contact-hero">
-        <span className="section-label" style={{ position: 'relative', zIndex: 1 }}>Contact</span>
-        <h1 className="section-title" style={{ color: '#fff', fontSize: 48, position: 'relative', zIndex: 1 }}>컨택트</h1>
-        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, position: 'relative', zIndex: 1, fontWeight: 300 }}>
-          프로젝트 제안 및 파트너십 문의
-        </p>
+        <span className="section-label">Contact</span>
+        <h1 className="section-title" style={{ fontSize: 42 }}>컨택트</h1>
+        <p className="page-hero-desc">프로젝트 제안 및 파트너십 문의</p>
       </section>
 
       <section className="section">

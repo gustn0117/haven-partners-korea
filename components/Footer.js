@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-left">
-          <Image src="/LOGO.png" alt="Haven Group" width={160} height={40} className="footer-logo-img" />
+          <Image src="/logo-dark.png" alt="Haven Group" width={140} height={48} className="footer-logo-img" />
           <p>
             헤이븐파트너스코리아<br />
             미국 Haven Group의 한국 자회사<br />
@@ -15,10 +15,10 @@ export default function Footer() {
         </div>
         <div className="footer-right">
           <div className="footer-nav">
-            <Link href="/about">About</Link>
-            <Link href="/board/news">News</Link>
-            <Link href="/board/works">Works</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/about">회사소개</Link>
+            <Link href="/board/news">뉴스</Link>
+            <Link href="/board/works">작품</Link>
+            <Link href="/contact">컨택트</Link>
           </div>
           <div className="footer-email">contact@havenpartnerskorea.com</div>
         </div>

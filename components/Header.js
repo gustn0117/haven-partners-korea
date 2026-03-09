@@ -11,7 +11,7 @@ export default function Header() {
     <header className="header">
       <div className="header-inner">
         <Link href="/" className="logo-link">
-          <Image src="/LOGO2.jpg" alt="Haven Group" width={44} height={44} className="logo-icon" style={{ borderRadius: 4 }} />
+          <Image src="/logo-h.png" alt="Haven Group" width={40} height={32} className="logo-icon" />
           <div className="logo-text-wrap">
             <span className="logo-text">Haven Partners</span>
             <span className="logo-sub">Korea</span>
@@ -19,22 +19,19 @@ export default function Header() {
         </Link>
         <nav>
           <Link href="/about" className={pathname === '/about' ? 'active' : ''}>
-            About
+            회사소개
           </Link>
           <div className="nav-dropdown">
-            <Link
-              href="/board/news"
-              className={pathname.startsWith('/board') ? 'active' : ''}
-            >
-              Board
+            <Link href="/board/news" className={pathname.startsWith('/board') ? 'active' : ''}>
+              게시판
             </Link>
             <div className="nav-dropdown-menu">
-              <Link href="/board/news">News</Link>
-              <Link href="/board/works">Works</Link>
+              <Link href="/board/news">뉴스</Link>
+              <Link href="/board/works">작품</Link>
             </div>
           </div>
           <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>
-            Contact
+            컨택트
           </Link>
         </nav>
       </div>

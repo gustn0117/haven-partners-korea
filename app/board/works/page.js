@@ -33,17 +33,17 @@ export default function WorksPage() {
   return (
     <>
       <section className="board-hero">
-        <span className="section-label" style={{ position: 'relative', zIndex: 1 }}>Board</span>
-        <h1 className="section-title" style={{ color: '#fff', fontSize: 48, position: 'relative', zIndex: 1 }}>게시판</h1>
+        <span className="section-label">Board</span>
+        <h1 className="section-title" style={{ fontSize: 42 }}>게시판</h1>
       </section>
 
       <section className="section">
         <div className="board-tabs">
           <Link href="/board/news" className={`board-tab ${pathname === '/board/news' ? 'active' : ''}`}>
-            News
+            뉴스
           </Link>
           <Link href="/board/works" className={`board-tab ${pathname === '/board/works' ? 'active' : ''}`}>
-            Works
+            작품
           </Link>
         </div>
 
