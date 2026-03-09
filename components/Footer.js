@@ -10,10 +10,13 @@ export default function Footer() {
             <Image src="/logo-h.png" alt="H" width={36} height={29} className="footer-h-symbol" />
             <Image src="/logo-dark.png" alt="Haven Group" width={180} height={62} className="footer-logo-img" />
           </div>
-          <p>
-            Haven Partners Korea<br />
-            콘텐츠 투자 · 배급
-          </p>
+          <div className="footer-affiliates">
+            <span>Haven Bridge</span>
+            <span className="footer-aff-divider" />
+            <span>Haven Partners Korea</span>
+            <span className="footer-aff-divider" />
+            <span>Haven Foundation</span>
+          </div>
         </div>
         <div className="footer-right">
           <div className="footer-nav">
