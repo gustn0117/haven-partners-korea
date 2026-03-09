@@ -41,6 +41,10 @@ export default function AboutPage() {
               한국의 창의적인 스토리텔링이 글로벌 시장에서 새로운 기준이 될 수 있도록
               전략적 파트너로 함께하겠습니다.
             </p>
+            <div className="about-signature">
+              <div className="about-signature-line" />
+              <span className="about-signature-name">Haven Partners Korea</span>
+            </div>
           </div>
         </div>
       </section>

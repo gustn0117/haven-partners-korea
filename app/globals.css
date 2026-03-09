@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 :root {
-  --gold: #9e8654;
-  --gold-light: #b8a06e;
+  --gold: #c4a265;
+  --gold-light: #d4b87a;
+  --purple: #7b6880;
+  --purple-light: #9a8a9e;
   --dark: #222222;
   --text: #333333;
   --text-light: #666666;
@@ -161,6 +163,34 @@ nav a:hover::after, nav a.active::after { width: 100%; }
   overflow: hidden;
 }
 
+/* Decorative corner lines */
+.landing::before,
+.landing::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+.landing::before {
+  top: 60px;
+  left: 60px;
+  width: 80px;
+  height: 80px;
+  border-top: 1px solid var(--purple-light);
+  border-left: 1px solid var(--purple-light);
+  opacity: 0.35;
+}
+
+.landing::after {
+  bottom: 60px;
+  right: 60px;
+  width: 80px;
+  height: 80px;
+  border-bottom: 1px solid var(--purple-light);
+  border-right: 1px solid var(--purple-light);
+  opacity: 0.35;
+}
+
 .landing-center {
   text-align: center;
   display: flex;
@@ -176,8 +206,8 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 
 .landing-line {
   width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold), var(--purple-light));
   margin-bottom: 28px;
 }
 
@@ -562,6 +592,29 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 }
 
 .about-intro-text p + p { margin-top: 20px; }
+
+.about-signature {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.about-signature-line {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, var(--gold), var(--purple-light));
+  margin-bottom: 16px;
+}
+
+.about-signature-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--purple);
+  letter-spacing: 1px;
+  font-weight: 400;
+}
 
 /* Focus Cards */
 .focus-grid {
@@ -1193,8 +1246,9 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 .footer-group-line {
   width: 1px;
   height: 20px;
-  background: var(--border);
+  background: linear-gradient(to bottom, var(--gold-light), var(--purple-light));
   margin: 12px 0;
+  opacity: 0.5;
 }
 
 .footer-logo-img {
@@ -1238,6 +1292,8 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 }
 
 @media (max-width: 768px) {
+  .landing::before { top: 24px; left: 24px; width: 48px; height: 48px; }
+  .landing::after { bottom: 24px; right: 24px; width: 48px; height: 48px; }
   .landing-symbol { width: 48px; }
   .landing-title { font-size: 26px; letter-spacing: 1px; }
   .landing-hero-copy { font-size: 15px; }
