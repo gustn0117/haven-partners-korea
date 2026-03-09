@@ -4,6 +4,12 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <div className="landing">
+      {/* Background decorative elements */}
+      <div className="landing-bg-ring landing-bg-ring-1" />
+      <div className="landing-bg-ring landing-bg-ring-2" />
+      <div className="landing-accent-line landing-accent-left" />
+      <div className="landing-accent-line landing-accent-right" />
+
       {/* Center Content */}
       <div className="landing-center">
         <Image src="/logo-h.png" alt="Haven Group" width={80} height={65} className="landing-symbol" priority />

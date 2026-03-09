@@ -163,7 +163,7 @@ nav a:hover::after, nav a.active::after { width: 100%; }
   overflow: hidden;
 }
 
-/* Decorative corner lines */
+/* Corner brackets */
 .landing::before,
 .landing::after {
   content: '';
@@ -172,23 +172,74 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 }
 
 .landing::before {
-  top: 60px;
-  left: 60px;
-  width: 80px;
-  height: 80px;
+  top: 48px;
+  left: 48px;
+  width: 100px;
+  height: 100px;
   border-top: 1px solid var(--purple-light);
   border-left: 1px solid var(--purple-light);
-  opacity: 0.35;
+  opacity: 0.3;
 }
 
 .landing::after {
-  bottom: 60px;
-  right: 60px;
-  width: 80px;
-  height: 80px;
+  bottom: 48px;
+  right: 48px;
+  width: 100px;
+  height: 100px;
   border-bottom: 1px solid var(--purple-light);
   border-right: 1px solid var(--purple-light);
-  opacity: 0.35;
+  opacity: 0.3;
+}
+
+/* Background decorative rings */
+.landing-bg-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--gold-light);
+  pointer-events: none;
+}
+
+.landing-bg-ring-1 {
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.06;
+}
+
+.landing-bg-ring-2 {
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.04;
+  border-color: var(--purple-light);
+}
+
+/* Accent vertical lines on sides */
+.landing-accent-line {
+  position: absolute;
+  width: 1px;
+  height: 120px;
+  pointer-events: none;
+}
+
+.landing-accent-left {
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(to bottom, transparent, var(--gold-light), transparent);
+  opacity: 0.25;
+}
+
+.landing-accent-right {
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(to bottom, transparent, var(--purple-light), transparent);
+  opacity: 0.25;
 }
 
 .landing-center {
@@ -1292,8 +1343,11 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 }
 
 @media (max-width: 768px) {
-  .landing::before { top: 24px; left: 24px; width: 48px; height: 48px; }
-  .landing::after { bottom: 24px; right: 24px; width: 48px; height: 48px; }
+  .landing::before { top: 20px; left: 20px; width: 48px; height: 48px; }
+  .landing::after { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+  .landing-bg-ring-1 { width: 360px; height: 360px; }
+  .landing-bg-ring-2 { width: 240px; height: 240px; }
+  .landing-accent-line { display: none; }
   .landing-symbol { width: 48px; }
   .landing-title { font-size: 26px; letter-spacing: 1px; }
   .landing-hero-copy { font-size: 15px; }
