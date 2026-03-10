@@ -7,8 +7,11 @@ export default function Home() {
       {/* Background decorative elements */}
       <div className="landing-bg-ring landing-bg-ring-1" />
       <div className="landing-bg-ring landing-bg-ring-2" />
+      <div className="landing-bg-ring landing-bg-ring-3" />
       <div className="landing-accent-line landing-accent-left" />
       <div className="landing-accent-line landing-accent-right" />
+      <div className="landing-glow landing-glow-1" />
+      <div className="landing-glow landing-glow-2" />
 
       {/* Center Content */}
       <div className="landing-center">
