@@ -1,5 +1,5 @@
 import ContactForm from '@/components/ContactForm';
-import { getServiceClient } from '@/lib/supabase';
+import { getSettings as fetchSettings } from '@/lib/db';
 
 export const metadata = {
   title: 'Contact | Haven Partners Korea',
@@ -8,11 +8,7 @@ export const metadata = {
 export const dynamic = 'force-dynamic';
 
 async function getSettings() {
-  const supabase = getServiceClient();
-  const { data } = await supabase.from('settings').select('*');
-  const settings = {};
-  (data || []).forEach((row) => { settings[row.key] = row.value; });
-  return settings;
+  return fetchSettings();
 }
 
 export default async function ContactPage() {

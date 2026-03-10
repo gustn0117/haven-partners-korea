@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getServiceClient } from '@/lib/supabase';
+import { getWorks, addWork, updateWork, deleteWork } from '@/lib/db';
 
 const PASSWORD = '1234';
 
@@ -12,10 +12,7 @@ function checkAuth(request) {
 }
 
 export async function GET() {
-  const supabase = getServiceClient();
-  const { data, error } = await supabase.from('works').select('*').order('created_at', { ascending: false });
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json(data);
+  return NextResponse.json(getWorks());
 }
 
 export async function POST(request) {
@@ -23,22 +20,18 @@ export async function POST(request) {
   if (authErr) return authErr;
 
   const body = await request.json();
-  const supabase = getServiceClient();
-  const { data, error } = await supabase.from('works').insert(body).select().single();
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json(data);
+  const item = addWork(body);
+  return NextResponse.json(item);
 }
 
 export async function PUT(request) {
   const authErr = checkAuth(request);
   if (authErr) return authErr;
 
-  const body = await request.json();
-  const { id, ...rest } = body;
-  const supabase = getServiceClient();
-  const { data, error } = await supabase.from('works').update(rest).eq('id', id).select().single();
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json(data);
+  const { id, ...rest } = await request.json();
+  const item = updateWork(id, rest);
+  if (!item) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  return NextResponse.json(item);
 }
 
 export async function DELETE(request) {
@@ -46,8 +39,6 @@ export async function DELETE(request) {
   if (authErr) return authErr;
 
   const { id } = await request.json();
-  const supabase = getServiceClient();
-  const { error } = await supabase.from('works').delete().eq('id', id);
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  deleteWork(id);
   return NextResponse.json({ ok: true });
 }

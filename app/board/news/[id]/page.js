@@ -1,16 +1,11 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { getNewsById } from '@/lib/db';
 
 export const revalidate = 0;
 
 async function getNewsItem(id) {
-  const { data } = await supabase
-    .from('news')
-    .select('*')
-    .eq('id', id)
-    .single();
-  return data;
+  return getNewsById(id);
 }
 
 export async function generateMetadata({ params }) {

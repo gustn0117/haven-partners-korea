@@ -1,15 +1,11 @@
 import Link from 'next/link';
-import { supabase } from '@/lib/supabase';
+import { getWorks as fetchWorks } from '@/lib/db';
 import { WorkIcon } from '@/components/Icons';
 
 export const revalidate = 0;
 
 async function getWorks() {
-  const { data } = await supabase
-    .from('works')
-    .select('*')
-    .order('created_at', { ascending: false });
-  return data || [];
+  return fetchWorks();
 }
 
 export default async function WorksPage() {

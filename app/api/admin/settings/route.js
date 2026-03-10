@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getServiceClient } from '@/lib/supabase';
+import { getSettings, updateSettings } from '@/lib/db';
 
 const PASSWORD = '1234';
 
@@ -12,12 +12,7 @@ function checkAuth(request) {
 }
 
 export async function GET() {
-  const supabase = getServiceClient();
-  const { data, error } = await supabase.from('settings').select('*');
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  const settings = {};
-  data.forEach((row) => { settings[row.key] = row.value; });
-  return NextResponse.json(settings);
+  return NextResponse.json(getSettings());
 }
 
 export async function PUT(request) {
@@ -25,12 +20,6 @@ export async function PUT(request) {
   if (authErr) return authErr;
 
   const body = await request.json();
-  const supabase = getServiceClient();
-
-  const updates = Object.entries(body).map(([key, value]) =>
-    supabase.from('settings').upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: 'key' })
-  );
-
-  await Promise.all(updates);
+  updateSettings(body);
   return NextResponse.json({ ok: true });
 }

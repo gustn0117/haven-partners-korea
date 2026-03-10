@@ -1,14 +1,10 @@
 import Link from 'next/link';
-import { supabase } from '@/lib/supabase';
+import { getNews as fetchNews } from '@/lib/db';
 
 export const revalidate = 0;
 
 async function getNews() {
-  const { data } = await supabase
-    .from('news')
-    .select('*')
-    .order('created_at', { ascending: false });
-  return data || [];
+  return fetchNews();
 }
 
 export default async function NewsPage() {
