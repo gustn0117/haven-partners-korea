@@ -13,16 +13,21 @@ export default function AdminPage() {
   const [editingItem, setEditingItem] = useState(null);
   const [form, setForm] = useState({});
   const [showForm, setShowForm] = useState(false);
+  const [settings, setSettings] = useState({ email: '', phone: '', address: '' });
+  const [settingsSaved, setSettingsSaved] = useState(false);
 
   const headers = { 'Content-Type': 'application/json', 'x-admin-password': password };
 
   const fetchData = useCallback(async () => {
-    const [newsRes, worksRes] = await Promise.all([
+    const [newsRes, worksRes, settingsRes] = await Promise.all([
       fetch('/api/admin/news'),
       fetch('/api/admin/works'),
+      fetch('/api/admin/settings'),
     ]);
     setNews(await newsRes.json());
     setWorks(await worksRes.json());
+    const s = await settingsRes.json();
+    setSettings({ email: s.email || '', phone: s.phone || '', address: s.address || '' });
   }, []);
 
   useEffect(() => {
@@ -84,6 +89,12 @@ export default function AdminPage() {
     setForm({});
   };
 
+  const handleSettingsSave = async () => {
+    await fetch('/api/admin/settings', { method: 'PUT', headers, body: JSON.stringify(settings) });
+    setSettingsSaved(true);
+    setTimeout(() => setSettingsSaved(false), 2000);
+  };
+
   if (!authed) {
     return (
       <div className={styles.loginWrap}>
@@ -120,31 +131,64 @@ export default function AdminPage() {
         <div className={styles.tabs}>
           <button className={`${styles.tab} ${tab === 'news' ? styles.tabActive : ''}`} onClick={() => { setTab('news'); closeForm(); }}>뉴스</button>
           <button className={`${styles.tab} ${tab === 'works' ? styles.tabActive : ''}`} onClick={() => { setTab('works'); closeForm(); }}>작품</button>
+          <button className={`${styles.tab} ${tab === 'settings' ? styles.tabActive : ''}`} onClick={() => { setTab('settings'); closeForm(); }}>설정</button>
         </div>
-        <button className={styles.btnAdd} onClick={startNew}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg>
-          추가
-        </button>
+        {tab !== 'settings' && (
+          <button className={styles.btnAdd} onClick={startNew}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg>
+            추가
+          </button>
+        )}
       </div>
 
       {/* Stats */}
-      <div className={styles.stats}>
-        <div className={styles.statCard}>
-          <div className={styles.statLabel}>전체</div>
-          <div className={styles.statValue}>{news.length + works.length}</div>
+      {tab !== 'settings' && (
+        <div className={styles.stats}>
+          <div className={styles.statCard}>
+            <div className={styles.statLabel}>전체</div>
+            <div className={styles.statValue}>{news.length + works.length}</div>
+          </div>
+          <div className={styles.statCard}>
+            <div className={styles.statLabel}>뉴스</div>
+            <div className={styles.statValue}>{news.length}</div>
+          </div>
+          <div className={styles.statCard}>
+            <div className={styles.statLabel}>작품</div>
+            <div className={styles.statValue}>{works.length}</div>
+          </div>
         </div>
-        <div className={styles.statCard}>
-          <div className={styles.statLabel}>뉴스</div>
-          <div className={styles.statValue}>{news.length}</div>
+      )}
+
+      {/* Settings */}
+      {tab === 'settings' && (
+        <div className={styles.settingsWrap}>
+          <div className={styles.settingsCard}>
+            <h3 className={styles.settingsTitle}>연락처 정보</h3>
+            <p className={styles.settingsDesc}>Contact 페이지에 표시되는 정보를 관리합니다.</p>
+            <div className={styles.settingsGrid}>
+              <div className={styles.formRow}>
+                <label>이메일</label>
+                <input className={styles.input} value={settings.email} onChange={(e) => setSettings({ ...settings, email: e.target.value })} placeholder="contact@havepk.com" />
+              </div>
+              <div className={styles.formRow}>
+                <label>전화번호</label>
+                <input className={styles.input} value={settings.phone} onChange={(e) => setSettings({ ...settings, phone: e.target.value })} placeholder="02-1234-5678" />
+              </div>
+              <div className={styles.formRow} style={{ gridColumn: '1 / -1' }}>
+                <label>주소</label>
+                <input className={styles.input} value={settings.address} onChange={(e) => setSettings({ ...settings, address: e.target.value })} placeholder="서울특별시 강남구..." />
+              </div>
+            </div>
+            <div className={styles.settingsActions}>
+              {settingsSaved && <span className={styles.settingsSaved}>저장되었습니다</span>}
+              <button className={styles.btnPrimary} onClick={handleSettingsSave}>저장</button>
+            </div>
+          </div>
         </div>
-        <div className={styles.statCard}>
-          <div className={styles.statLabel}>작품</div>
-          <div className={styles.statValue}>{works.length}</div>
-        </div>
-      </div>
+      )}
 
       {/* List */}
-      <div className={styles.listWrap}>
+      {tab !== 'settings' && <div className={styles.listWrap}>
         <div className={styles.listHeader}>
           {tab === 'news' ? (
             <>
@@ -192,7 +236,7 @@ export default function AdminPage() {
             </div>
           ))}
         </div>
-      </div>
+      </div>}
 
       {/* Form Modal */}
       {showForm && (
