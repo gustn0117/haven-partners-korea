@@ -824,6 +824,13 @@ nav a:hover::after, nav a.active::after { width: 100%; }
   font-weight: 400;
 }
 
+.about-signature-img {
+  height: 50px;
+  width: auto;
+  filter: invert(1);
+  opacity: 0.85;
+}
+
 /* Focus Cards */
 .focus-grid {
   display: grid;
