@@ -29,7 +29,7 @@ export default function Home() {
           <span className="landing-divider-line" />
         </div>
         <h1 className="landing-title">Haven Partners Korea</h1>
-        <p className="landing-hero-copy">가장 견고한 토대 위에 세워지는 무한한 상상력</p>
+
         <div className="landing-sub-wrap">
           <span className="landing-sub-line" />
           <p className="landing-sub">Global Principal Investment for Film &amp; Television Content</p>
