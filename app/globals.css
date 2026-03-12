@@ -825,7 +825,7 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 }
 
 .about-signature-img {
-  height: 50px;
+  height: 80px;
   width: auto;
   opacity: 0.85;
 }
