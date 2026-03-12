@@ -13,7 +13,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-group-area">
-        <Image src="/logo-dark.png" alt="Haven Group" width={160} height={55} className="footer-logo-img" />
+        <Image src="/logo-dark-gold.png" alt="Haven Group" width={160} height={55} className="footer-logo-img" />
         <div className="footer-group-line" />
         <Image src="/logo-h.png" alt="H" width={32} height={26} className="footer-h-symbol" />
         <div className="footer-group-line" />
