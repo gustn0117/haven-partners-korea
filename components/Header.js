@@ -19,19 +19,19 @@ export default function Header() {
         </Link>
         <nav>
           <Link href="/about" className={pathname === '/about' ? 'active' : ''}>
-            회사소개
+            About
           </Link>
           <div className="nav-dropdown">
             <Link href="/board/news" className={pathname.startsWith('/board') ? 'active' : ''}>
-              게시판
+              Board
             </Link>
             <div className="nav-dropdown-menu">
-              <Link href="/board/news">뉴스</Link>
-              <Link href="/board/works">작품</Link>
+              <Link href="/board/news">News</Link>
+              <Link href="/board/works">Works</Link>
             </div>
           </div>
           <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>
-            컨택트
+            Contact
           </Link>
         </nav>
       </div>

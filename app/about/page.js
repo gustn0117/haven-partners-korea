@@ -1,4 +1,3 @@
-import Image from 'next/image';
 
 export const metadata = {
   title: '회사 소개 | Haven Partners Korea',
@@ -45,7 +44,7 @@ export default function AboutPage() {
             </p>
             <div className="about-signature">
               <div className="about-signature-line" />
-              <Image src="/E_sign.png" alt="Haven S. Moloney" width={200} height={60} className="about-signature-img" />
+              <img src="/E_sign.png" alt="Haven S. Moloney" className="about-signature-img" />
             </div>
           </div>
         </div>
