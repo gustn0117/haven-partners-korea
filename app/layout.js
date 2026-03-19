@@ -4,6 +4,11 @@ import LayoutShell from '@/components/LayoutShell';
 export const metadata = {
   title: 'Haven Partners Korea | 헤이븐파트너스코리아',
   description: '미국 Haven Group의 한국 자회사 - 콘텐츠 투자, 제작, 배급',
+  verification: {
+    other: {
+      'naver-site-verification': 'd73f9fcd6bb1e5a71c26cae69bc60bb6f2d26e52',
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
