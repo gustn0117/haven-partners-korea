@@ -33,12 +33,10 @@ export default async function ContactPage() {
               <h3>Business</h3>
               <p>Film &amp; Television Content Investment &amp; Distribution</p>
             </div>
-            {settings.email && (
-              <div className="contact-info-item">
-                <h3>Email</h3>
-                <p>{settings.email}</p>
-              </div>
-            )}
+            <div className="contact-info-item">
+              <h3>Email</h3>
+              <p>contact@havenpk.com</p>
+            </div>
             {settings.phone && (
               <div className="contact-info-item">
                 <h3>Phone</h3>
